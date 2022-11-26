@@ -24,7 +24,7 @@ public class Endpoint : EndpointWithoutRequest
 
     await SendAsync(new
     {
-      Response = testProducts.Generate(10)
+      Response = testProducts.Generate(20)
     }, cancellation: ct);
   }
 }
