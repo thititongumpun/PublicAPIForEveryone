@@ -9,7 +9,7 @@ builder.Services.AddAuthenticationJWTBearer(builder.Configuration["JwtSigningKey
 builder.Services.AddSwaggerDoc(maxEndpointVersion: 1, settings: s =>
 {
   s.DocumentName = "Initial Release 1.0";
-  s.Title = "ToyShopAPI";
+  s.Title = "Toy Shop API Documentation";
   s.Version = "v1.0";
 });
 var connectionString = builder.Configuration.GetConnectionString("ToyShopAPI");
