@@ -4,6 +4,15 @@ using ToyShopAPI.Features.Auth.Signup;
 using ToyShopAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+string PORT = Environment.GetEnvironmentVariable("PORT");
+Console.WriteLine(PORT);
+if (string.IsNullOrEmpty(PORT))
+{
+  builder.WebHost.UseUrls("http://0.0.0.0:8080");
+}
+
+
 builder.Services.AddFastEndpoints();
 builder.Services.AddAuthenticationJWTBearer(builder.Configuration["JwtSigningKey"]);
 builder.Services.AddSwaggerDoc(maxEndpointVersion: 1, settings: s =>
