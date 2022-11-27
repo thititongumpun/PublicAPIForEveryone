@@ -17,7 +17,7 @@ public class Endpoint : EndpointWithoutRequest
     int userIds = 1;
     var testProducts = new Faker<Products>()
       .RuleFor(c => c.ProductId, f => productIds++)
-      .RuleFor(c => c.Item, f => f.Commerce.Product())
+      .RuleFor(c => c.Item, f => f.Commerce.ProductName())
       .RuleFor(c => c.Quantity, f => f.Random.Number(1, 5))
       .RuleFor(c => c.Price, f => f.Commerce.Price())
       .RuleFor(c => c.Description, f => f.Commerce.ProductAdjective())
