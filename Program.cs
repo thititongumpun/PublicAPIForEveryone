@@ -5,14 +5,6 @@ using ToyShopAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string PORT = Environment.GetEnvironmentVariable("PORT");
-Console.WriteLine(PORT);
-if (string.IsNullOrEmpty(PORT))
-{
-  builder.WebHost.UseUrls("http://0.0.0.0:8080");
-}
-
-
 builder.Services.AddFastEndpoints();
 builder.Services.AddAuthenticationJWTBearer(builder.Configuration["JwtSigningKey"]);
 builder.Services.AddSwaggerDoc(maxEndpointVersion: 1, settings: s =>
@@ -43,4 +35,8 @@ app.UseFastEndpoints(c =>
 });
 app.UseOpenApi();
 app.UseSwaggerUi3(c => c.ConfigureDefaults());
-app.Run();
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var url = $"http://0.0.0.0:{port}";
+
+app.Run(url);
