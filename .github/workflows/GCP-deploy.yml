@@ -21,6 +21,9 @@ jobs:
       - name: Configure Docker
         run: gcloud auth configure-docker --quiet
 
+      - name: Add Asia Repo
+        run: gcloud auth configure-docker asia-docker.pkg.dev
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
