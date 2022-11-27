@@ -37,5 +37,6 @@ jobs:
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v0
         with:
-          image: $IMAGE_NAME
+          image: ${{ env.IMAGE_NAME }}
           service: ${{ secrets.GCP_APP_NAME }}
+          region: asia-southeast1
