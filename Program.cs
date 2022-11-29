@@ -35,12 +35,6 @@ app.UseFastEndpoints(c =>
 app.UseOpenApi();
 app.UseSwaggerUi3(c => c.ConfigureDefaults());
 
-if (app.Environment.IsProduction())
-{
-  var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-  var url = $"http://0.0.0.0:{port}";
-  app.Run(port);
-} else
-{
-  app.Run();
-}
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var url = $"http://0.0.0.0:{port}";
+app.Run(url);
