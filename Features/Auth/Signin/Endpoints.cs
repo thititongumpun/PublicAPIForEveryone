@@ -40,7 +40,7 @@ public class Endpoint : Endpoint<Request>
 
     await SendAsync(new
     {
-      Access_Token = jwtToken
+      Access_token = jwtToken
     }, cancellation: ct);
   }
 }

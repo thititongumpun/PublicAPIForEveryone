@@ -26,6 +26,7 @@ builder.Services.AddScoped<ISignupData, SignupData>();
 builder.Services.AddScoped<ISigninData, SigninData>();
 
 var app = builder.Build();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseFastEndpoints(c =>
 {
