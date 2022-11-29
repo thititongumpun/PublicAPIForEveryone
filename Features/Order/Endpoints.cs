@@ -6,7 +6,7 @@ public class Endpoint : EndpointWithoutRequest
 {
   public override void Configure()
   {
-    Post("/orders");
+    Get("/orders");
     Version(1);
     AllowAnonymous();
   }
@@ -33,9 +33,6 @@ public class Endpoint : EndpointWithoutRequest
 
     var user = testUsers.Generate();
 
-    await SendAsync(new
-    {
-      Response = user
-    }, cancellation: ct);
+    await SendAsync(user, cancellation: ct);
   }
 }

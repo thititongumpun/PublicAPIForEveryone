@@ -6,7 +6,7 @@ public class Endpoint : EndpointWithoutRequest
 {
   public override void Configure()
   {
-    Post("/products");
+    Get("/products");
     Version(1);
     AllowAnonymous();
   }
@@ -22,9 +22,6 @@ public class Endpoint : EndpointWithoutRequest
       .RuleFor(c => c.Description, f => f.Commerce.ProductAdjective())
       .RuleFor(c => c.ImageUrl, (f, i) => f.Image.LoremFlickrUrl(480, 480, i.Item, false, true));
 
-    await SendAsync(new
-    {
-      Response = testProducts.Generate(20)
-    }, cancellation: ct);
+    await SendAsync(testProducts.Generate(20), cancellation: ct);
   }
 }

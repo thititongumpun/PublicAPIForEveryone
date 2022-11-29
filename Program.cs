@@ -31,12 +31,15 @@ app.UseFastEndpoints(c =>
 {
   c.Versioning.Prefix = "v";
   c.Endpoints.RoutePrefix = "api";
-  c.Serializer.Options.PropertyNamingPolicy = null;
 });
 app.UseOpenApi();
 app.UseSwaggerUi3(c => c.ConfigureDefaults());
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-var url = $"http://0.0.0.0:{port}";
+if (app.Environment.IsProduction())
+{
+  var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+  var url = $"http://0.0.0.0:{port}";
+  app.Run(port);
+}
 
-app.Run(url);
+app.Run();
