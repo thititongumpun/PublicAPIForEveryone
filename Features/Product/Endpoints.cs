@@ -20,7 +20,7 @@ public class Endpoint : EndpointWithoutRequest
       .RuleFor(c => c.Quantity, f => f.Random.Number(1, 5))
       .RuleFor(c => c.Price, f => f.Commerce.Price())
       .RuleFor(c => c.Description, f => f.Commerce.ProductAdjective())
-      .RuleFor(c => c.ImageUrl, (f, i) => f.Image.LoremFlickrUrl(480, 480, i.Item, false, true));
+      .RuleFor(c => c.ImageUrl, (f, i) => f.Image.LoremFlickrUrl(500, 500, i.Item, false));
 
     await SendAsync(testProducts.Generate(20), cancellation: ct);
   }
